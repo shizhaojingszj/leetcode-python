@@ -12,7 +12,7 @@ class Solution:
                 left = i - offset
                 right = i + offset + int(even)  # 通过这里切换是考虑以i为中心，还是以i和i+1一起为中心
                 length = right - left + 1
-                if left > 0 and right < len(s) and s[left] == s[right]:
+                if left >= 0 and right < len(s) and s[left] == s[right]:
                     if length > longest:
                         longest_palindrome = s[left : (right + 1)]
                         longest = length
@@ -29,9 +29,14 @@ class Solution:
 
 def test_solution():
     examples = [
+        ("a", "a"),
         ("babad", ["bab", "aba"]),
         ("cbbd", "bb"),
     ]
     for input, answer in examples:
         res = Solution().longestPalindrome(input)
-        assert res == answer or res in answer
+        result = False
+        result = res == answer
+        if not result and isinstance(answer, list):
+            result = res in answer
+        assert result, (input, answer, res)
