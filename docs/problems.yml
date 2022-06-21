@@ -1,0 +1,47 @@
+problems:
+  lt79:
+    name: 79. Word Search
+    description: |
+      Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+
+      The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+
+    solution:
+      - 一个grid，每个位置都可以考虑，每个位置都有4个方向，所以是DFS
+      - 有限制，说走过的cell不能再走，所以是backtracking有条件要回复
+      - recursive有两个参数重要，word和index
+      - recursive写的时候，self.dfs是一个predicate
+      - found是四个方向成功条件的any
+    
+  lt1041:
+    name: 1041. Robot Bounded In Circle
+    description: |
+      On an infinite plane, a robot initially stands at (0, 0) and faces north. Note that:
+
+      The north direction is the positive direction of the y-axis.
+      The south direction is the negative direction of the y-axis.
+      The east direction is the positive direction of the x-axis.
+      The west direction is the negative direction of the x-axis.
+      The robot can receive one of three instructions:
+
+      "G": go straight 1 unit.
+      "L": turn 90 degrees to the left (i.e., anti-clockwise direction).
+      "R": turn 90 degrees to the right (i.e., clockwise direction).
+      The robot performs the instructions given in order, and repeats them forever.
+
+      Return true if and only if there exists a circle in the plane such that the robot never leaves the circle.
+
+    solution:
+      - 结束的条件是：回到原点 or 最终方向跟起始不同
+      - 使用(0,0)表示原点，每个G表示一个坐标变化
+
+  lt424:
+    name: 424. Longest Repeating Character Replacement
+    description: |
+      You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
+
+      Return the length of the longest substring containing the same letter you can get after performing the above operations.
+
+    solution:
+      - 快慢指针，指针间为滑动窗口，滑动窗口统计最大的char是哪个
+      - 条件：比较最大的char出现次数n + k >= window的大小，此时符合要求，可以算答案
