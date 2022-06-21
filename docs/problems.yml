@@ -45,3 +45,21 @@ problems:
     solution:
       - 快慢指针，指针间为滑动窗口，滑动窗口统计最大的char是哪个
       - 条件：比较最大的char出现次数n + k >= window的大小，此时符合要求，可以算答案
+
+  lt337:
+    name: 337. House Robber III
+    description: |
+      The thief has found himself a new place for his thievery again. There is only one entrance to this area, called root.
+
+      Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that all houses in this place form a binary tree. It will automatically contact the police if two directly-linked houses were broken into on the same night.
+
+      Given the root of the binary tree, return the maximum amount of money the thief can rob without alerting the police.
+
+    solution:
+      - 二叉树，贪心算法
+      - 条件是不允许出现parent和direct child同时被rob的情况
+      - 主函数需要考虑[rob, not_rob]两种情况，返回一个列表
+      - 在parent被rob的时候，只能返回direct children分别被not_rob的情况
+      - 在parent考虑not_rob的情况，需要考虑每个child的两种情况：max([rob, not_rob])
+
+  lt
