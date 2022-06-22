@@ -62,4 +62,34 @@ problems:
       - 在parent被rob的时候，只能返回direct children分别被not_rob的情况
       - 在parent考虑not_rob的情况，需要考虑每个child的两种情况：max([rob, not_rob])
 
-  lt
+  lt365:
+    name: 365. Water and Jug Problem
+    description: |
+
+      You are given two jugs with capacities jug1Capacity and jug2Capacity liters. There is an infinite amount of water supply available. Determine whether it is possible to measure exactly targetCapacity liters using these two jugs.
+
+      If targetCapacity liters of water are measurable, you must have targetCapacity liters of water contained within one or both buckets by the end.
+
+      Operations allowed:
+
+      Fill any of the jugs with water.
+      Empty any of the jugs.
+      Pour water from one jug into another till the other jug is completely full, or the first jug itself is empty.
+
+    solution:
+      - 问题很实际，是两个烧杯称出一个实际的值
+      - 使用DFS吧，数学法想不到啊
+      - 不过gcd应该会
+      - DFS的下一步操作，需要只考虑容量大的烧杯，否则可能会因为节点太多，过不了
+      - 停止的条件：作为可行步骤的stack里面没有新的步骤了，因为步骤（大烧杯量）都见过了
+      - DFS2(from Michelle)以只考虑大的烧杯为例（也就是每次状态小烧杯要么满，要么空），需要考虑的有：
+        - 找到的条件：
+          - 大烧杯目前量等于目标
+          - 大烧杯总量等于目标
+          - 小烧杯总量等于目标
+          - 小烧杯总量与大烧杯目前量等于目标
+        - 上述条件未找到，那么大烧杯下一个目前量可能的操作：
+          - 大烧杯目前量 + 小烧杯总量 (state + x)
+          - 大烧杯目前量 - 小烧杯总量 (state - x)
+          - 大烧杯目前量先给小烧杯，小烧杯存着；之后再把大烧杯填满，再往小烧杯倒直到把小烧杯倒满；此时，大烧杯新的目前量 (y - (x - state) )
+          - 大烧杯可能快满了，利用小烧杯：小烧杯总量倒给大烧杯直到满；然后将小烧杯剩余量给到大烧杯。 (x - (y - state) )
