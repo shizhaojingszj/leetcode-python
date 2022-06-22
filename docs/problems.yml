@@ -106,3 +106,14 @@ problems:
       - 在见到非零值的时候，将该值放到array对应的位置（前移了）
       - 在val1 + val2等于全部的时候，说明后面都是0值
       - 将所有val1后面的值都给0值
+
+  lt881:
+    name: 881. Boats to Save People
+    description: |
+      You are given an array people where people[i] is the weight of the ith person, and an infinite number of boats where each boat can carry a maximum weight of limit. Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most limit.
+
+      Return the minimum number of boats to carry every given person.
+    solution:
+      - 这里有个条件是person最重不超过limit，也就是每个person最终都有boat
+      - 排序people之后，让最重的跟最轻的组队 
+      - 双指针
