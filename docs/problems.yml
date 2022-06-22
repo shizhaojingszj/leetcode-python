@@ -117,3 +117,20 @@ problems:
       - 这里有个条件是person最重不超过limit，也就是每个person最终都有boat
       - 排序people之后，让最重的跟最轻的组队 
       - 双指针
+
+  lt941:
+    name: 941. Valid Mountain Array
+    description: |
+      Given an array of integers arr, return true if and only if it is a valid mountain array.
+
+      Recall that arr is a mountain array if and only if:
+
+      arr.length >= 3
+      There exists some i with 0 < i < arr.length - 1 such that:
+      arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+      arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+
+    solution:
+      - 按照题目要求，遍历一次，看最终遍历的指针i能否到达结尾
+      - 分两步走，先看递增的情况，尝试递增后，i不能是0或者N-1，也就是没走，或者直接走到了结尾
+      - 在看递减的情况，尝试递减后，i能否到结尾
