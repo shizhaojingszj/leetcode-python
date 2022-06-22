@@ -159,3 +159,17 @@ problems:
     solution:
       - 快慢指针，用一个字典保存见过的char的最右的位置
       - 当出现重复的时候，修改left为max(left, d[char]+1)，也就是有可能修改left为之前出现过的char的后一个位置
+
+  lt34:
+    name: 34. Find First and Last Position of Element in Sorted Array
+    description: |
+      Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+      If target is not found in the array, return [-1, -1].
+
+      You must write an algorithm with O(log n) runtime complexity.
+    solution:
+      - 肯定是binary search，然后就是怎么改变范围
+      - 一定要保证最终结果在left, right定义的interval里面
+      - 每次mid，可以看一下mid - 1，作为结束条件
+      - 要为first和last各算一遍
