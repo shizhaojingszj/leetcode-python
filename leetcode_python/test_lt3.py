@@ -5,7 +5,7 @@
 """
 
 
-class Solution:
+class Solution1:
     def lengthOfLongestSubstring(self, s: str) -> int:
         cache = dict()
         length = 0
@@ -34,7 +34,7 @@ class Solution:
         return length
 
 
-def test_solution():
+def test_solution1():
     examples = [
         ("tmmzuxt", 5),
         ("abcabcbb", 3),
@@ -43,5 +43,41 @@ def test_solution():
     ]
 
     for input, expect in examples:
-        res = Solution().lengthOfLongestSubstring(input)
+        res = Solution1().lengthOfLongestSubstring(input)
+        assert expect == res, (input, expect, res)
+
+
+class Solution2:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        left, right = 0, 0
+        N = len(s)
+        d = {}
+        max_length = 0
+
+        while left < N and right < N:
+            # 一次只看right位置上的char
+            char = s[right]
+            if char not in d:
+                # 记录char最后出现的位置
+                d[char] = right
+            else:
+                left = max(left, d[char] + 1)
+                d[char] = right
+
+            max_length = max(max_length, right - left + 1)
+            right += 1
+
+        return max_length
+
+
+def test_solution2():
+    examples = [
+        ("tmmzuxt", 5),
+        ("abcabcbb", 3),
+        ("bbbbb", 1),
+        ("pwwkew", 3),
+    ]
+
+    for input, expect in examples:
+        res = Solution2().lengthOfLongestSubstring(input)
         assert expect == res, (input, expect, res)

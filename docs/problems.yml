@@ -150,3 +150,12 @@ problems:
       - 可以理解为找Delta(x) * min(two_heights)的最大值
       - 从两边指针出发，Delta(x)的方向是减
       - 当出现两边高度不一致时，下一个可能比当前值更大的方向，一定是较低的那个高度要变化。因为另一边再往里走，一定会比当前要小。
+
+  lt3:
+    name: 3. Longest Substring Without Repeating Characters
+    description: |
+      Given a string s, find the length of the longest substring without repeating characters.  
+
+    solution:
+      - 快慢指针，用一个字典保存见过的char的最右的位置
+      - 当出现重复的时候，修改left为max(left, d[char]+1)，也就是有可能修改left为之前出现过的char的后一个位置
