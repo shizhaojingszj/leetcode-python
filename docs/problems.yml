@@ -173,3 +173,15 @@ problems:
       - 一定要保证最终结果在left, right定义的interval里面
       - 每次mid，可以看一下mid - 1，作为结束条件
       - 要为first和last各算一遍
+
+  lt278:
+    name: 278. First Bad Version
+    description: |
+      You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+
+      Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+
+      You are given an API bool isBadVersion(version) which returns whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API. 
+
+    solution:
+      - 也是binary search，关键在于first bad之后都是bad 
