@@ -93,3 +93,16 @@ problems:
           - 大烧杯目前量 - 小烧杯总量 (state - x)
           - 大烧杯目前量先给小烧杯，小烧杯存着；之后再把大烧杯填满，再往小烧杯倒直到把小烧杯倒满；此时，大烧杯新的目前量 (y - (x - state) )
           - 大烧杯可能快满了，利用小烧杯：小烧杯总量倒给大烧杯直到满；然后将小烧杯剩余量给到大烧杯。 (x - (y - state) )
+
+  lt283:
+    description: |
+      Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+      Note that you must do this in-place without making a copy of the array.
+
+    name: 283. Move Zeroes
+    solution:
+      - 一次循环，用一个val1表示当前见过几个非零值，另一个val2表示当前见过几个0值
+      - 在见到非零值的时候，将该值放到array对应的位置（前移了）
+      - 在val1 + val2等于全部的时候，说明后面都是0值
+      - 将所有val1后面的值都给0值
