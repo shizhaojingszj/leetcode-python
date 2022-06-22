@@ -134,3 +134,19 @@ problems:
       - 按照题目要求，遍历一次，看最终遍历的指针i能否到达结尾
       - 分两步走，先看递增的情况，尝试递增后，i不能是0或者N-1，也就是没走，或者直接走到了结尾
       - 在看递减的情况，尝试递减后，i能否到结尾
+
+  lt11:
+    name: 11. Container With Most Water
+    description: |
+      You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+      Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+      Return the maximum amount of water a container can store.
+
+      Notice that you may not slant the container.
+
+    solution:
+      - 可以理解为找Delta(x) * min(two_heights)的最大值
+      - 从两边指针出发，Delta(x)的方向是减
+      - 当出现两边高度不一致时，下一个可能比当前值更大的方向，一定是较低的那个高度要变化。因为另一边再往里走，一定会比当前要小。
