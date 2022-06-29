@@ -43,8 +43,9 @@ problems:
       Return the length of the longest substring containing the same letter you can get after performing the above operations.
 
     solution:
-      - 快慢指针，指针间为滑动窗口，滑动窗口统计最大的char是哪个
+      - 快慢指针，指针间为滑动窗口，滑动窗口统计最大的char是哪个：注意初始条件一定是一致的
       - 条件：比较最大的char出现次数n + k >= window的大小，此时符合要求，可以算答案
+      - 循环方向：一定是往增加max_length的角度考虑，所以可能某一时刻的window，就是不符合要求
 
   lt337:
     name: 337. House Robber III

@@ -107,6 +107,7 @@ class Solution1:
 input1 = [
     (("ABAA", 0), 2),
     (("ABAB", 2), 4),
+    (("AABABBA", 1), 4),
 ]
 
 
@@ -153,4 +154,58 @@ class Solution2:
 def test_solution2():
     for input, expect in input1:
         res = Solution2().characterReplacement(*input)
+        assert res == expect, (res, expect)
+
+
+class Solution3:
+    def characterReplacement(self, s: str, k: int) -> int:
+        # 跟Solution2比，要快一些，因为max_char不用每步都计算
+        chars = {}
+        # 快慢指针，window为[left, right)，初始为空，否则max_freq也为0，就是“不一致”
+        left, right = 0, 0
+        # 长度
+        N = len(s)
+        # max_freq，指sliding window里面的最大的char的次数
+        max_freq = 0
+        # 最大长度，结果
+        max_length = 0
+
+        def window_is_good():
+            return max_freq + k >= right - left
+
+        while left < N:
+
+            # 这个循环就是修改right和chars
+            while right < N:
+                # 假如此刻window后面一个char计算入window
+                char = s[right]
+                # 相应window参数变化
+                if char not in chars:
+                    chars[char] = 1
+                else:
+                    chars[char] += 1
+                max_freq = max(max_freq, chars[char])
+                # 计算一下window是否正确
+                
+                # 往右移进入下一次循环
+                right += 1
+
+            
+            # 此时right多加了1
+            if max_freq + k < right - left + 1:
+                max_length = max(max_length, right - left)
+            else:
+                max_length = max(max_length, right - left + 1)
+
+            # left需要变化
+            char = s[left]
+            chars[char] -= 1
+            left += 1
+
+        return max_length
+
+
+def test_solution3():
+    for input, expect in input1:
+        res = Solution3().characterReplacement(*input)
         assert res == expect, (res, expect)
