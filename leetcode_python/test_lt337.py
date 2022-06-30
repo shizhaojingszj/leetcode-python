@@ -36,7 +36,12 @@ class Tree:
                 # 获取下一对left和right
                 if i >= len(all_nodes):
                     return
-                lv, rv = all_nodes[i:(i+2)]
+                left_right = all_nodes[i:(i+2)]
+                if len(left_right) == 2:
+                    lv, rv = left_right
+                else:
+                    lv = left_right
+                    rv = None
                 i += 2
                 node.left = TreeNode(lv) if lv is not None else None
                 node.right = TreeNode(rv) if rv is not None else None

@@ -211,3 +211,11 @@ problems:
     solution:
       - 有一种heap的方式，这种只需要顺序pop就好
       - 另一种就是quick select，不断找pivot的方式，加上random就更好，基本上O(n)
+
+  lt94:
+    name: 94. Binary Tree Inorder Traversal
+    description: |
+      Given the root of a binary tree, return the inorder traversal of its nodes' values.
+    
+    solution:
+      - 什么叫inorder，就是left -> val -> right
