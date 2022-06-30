@@ -198,5 +198,16 @@ problems:
 
     solution:
       - 使用binary search，注意如何选择left和right，使用的是matrix的确定最小值matrix[0][0]，及matrix的最大值matrix[n-1][n-1]。
-      - 没理解的地方：mid的计算
+      - 没理解的地方：mid并不一定存在于matrix中？
       - 在写less_or_equal_val(val)函数的时候，可以用bisect.bisect_right来进行提速
+
+  lt215:
+    name: 215. Kth Largest Element in an Array
+    description: |
+      Given an integer array nums and an integer k, return the kth largest element in the array.
+
+      Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+    solution:
+      - 有一种heap的方式，这种只需要顺序pop就好
+      - 另一种就是quick select，不断找pivot的方式，加上random就更好，基本上O(n)
