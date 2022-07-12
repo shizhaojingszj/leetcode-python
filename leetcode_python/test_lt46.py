@@ -17,6 +17,34 @@ class Solution:
             nums.append(num)
         return result
 
+    def permute1(self, nums: List[int]) -> List[List[int]]:
+        result = []
+
+        def recursive(nums):
+            # base case
+            if len(nums) == 1:
+                return [ nums[:] ]
+
+            res = []
+            
+            N2 = len(nums)
+            for n in range(N2):
+                # 每次先pop出来最前面的值
+                num = nums.pop(0)
+                perms = recursive(nums)
+                for perm in perms:
+                    perm.append(num)
+                res.extend([x[:] for x in perms])
+                # 再放回去到最后一个位置
+                nums.append(num)
+            return res
+
+        # 这里必须返回的是最后一级
+        result = recursive(nums)
+
+        return result
+
+
 
 def test_solution():
     examples = [
@@ -25,5 +53,5 @@ def test_solution():
         ([1], [[1]]),
     ]
     for input, expect in examples:
-        res = Solution().permute(input)
-        assert sorted(res) == sorted(expect), (input, expect, res)
+        res = Solution().permute1(input)
+        assert set(map(tuple, res)) == set(map(tuple, expect)), (input, expect, res)
